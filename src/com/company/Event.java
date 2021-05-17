@@ -15,7 +15,7 @@ public class Event {
 
 //    Event constructor
 
-    public Event(){
+    public Event() throws Exception {
         id++;
         Scanner snc = new Scanner(System.in);
 
@@ -43,7 +43,7 @@ public class Event {
 
     private void setEventId(){
         id++;
-        this.eventId = eventSport + 1000 + id;
+        this.eventId = eventSport +  1000 + id;
         System.out.println("The Id of the event is: " + eventId );
     }
 
@@ -67,6 +67,8 @@ public class Event {
 
     public String getInfo() {
         switch (eventSport) {
+            case 0:
+                return eventName + " is an Sport event , starting at " + eventDate + " at " + eventLocation;
             case 1:
                 return eventName + " is an Chess event , starting at " + eventDate + " at " + eventLocation;
 
