@@ -9,13 +9,13 @@ public class Event {
     private int eventCost;
     private static int organizingCost = 0;
 //    Event ID
-    private static int id = 0;
+    private static int id = 1000;
     private int eventSport ;
     private int eventId = 0;
 
 //    Event constructor
 
-    public Event() throws Exception {
+    public Event(){
         id++;
         Scanner snc = new Scanner(System.in);
 
@@ -42,8 +42,7 @@ public class Event {
     }
 
     private void setEventId(){
-        id++;
-        this.eventId = eventSport +  1000 + id;
+        this.eventId = eventSport + id;
         System.out.println("The Id of the event is: " + eventId );
     }
 
@@ -83,6 +82,23 @@ public class Event {
             default:
                 return "There s no information about this event";
         }
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public int hashCode(){
+        return id;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (!(obj instanceof Event))
+            return false;
+        if (obj == this)
+            return true;
+        return this.getId() == ((Event) obj).getId();
     }
 
 
