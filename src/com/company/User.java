@@ -48,14 +48,29 @@ public class User {
             String event = snc.nextLine();
             if(!"Quit".equals(event)){
                 ongoingEvents.add(event);
+                if(balance < 0){
+                    System.out.println("Your account balance has fallen below zero , you can't enroll in further events");
+                    break;
+                }
                 balance -= 100;
             }
             else{
              break;
             }
         }while(true);
+
+        System.out.println(firstName + " " + lastName " will be attending to the following events: ");
+        System.out.println(ongoingEvents);
+
     }
-    
+
+    public void balanceInfo(){
+        System.out.println("Your balance is: " + balance + "$");
+        if(balance < 0){
+            System.out.println("Your account balance has fallen below zero!");
+        }
+    }
+
 
 
 }
