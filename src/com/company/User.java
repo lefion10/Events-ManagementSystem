@@ -1,6 +1,6 @@
 package com.company;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class User {
     private String firstName;
@@ -29,7 +29,21 @@ public class User {
         this.lastName = snc.nextLine();
 
         System.out.println("1 - Chess \n2 - Tennis \n3 Basketball \n4 Soccer : ");
-        this.events = snc.nextInt();
+        try{
+            do{
+                this.events = snc.nextInt();
+                if(events > 0 && events < 5){
+                    break;
+                }
+                else{
+                    continue;
+                }
+            }
+            while(true);
+        }
+        catch (Throwable throwable){
+            System.out.println("You did not choose one of the options");
+        }
 
         setUserId();
         eventEnroll();
@@ -59,7 +73,7 @@ public class User {
             }
         }while(true);
 
-        System.out.println(firstName + " " + lastName " will be attending to the following events: ");
+        System.out.println(firstName + " " + lastName + " will be attending to the following events: ");
         System.out.println(ongoingEvents);
 
     }

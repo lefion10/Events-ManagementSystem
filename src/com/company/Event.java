@@ -1,5 +1,5 @@
 package com.company;
-import java.util.Scanner;
+import java.util.*;
 
 public class Event {
     private String eventName ;
@@ -29,10 +29,29 @@ public class Event {
         this.eventDate = snc.nextLine();
 
         System.out.println("1 - Chess \n2 - Tennis \n3 Basketball \n4 Soccer : ");
-        this.eventSport = snc.nextInt();
+        try{
+            do{
+                this.eventSport = snc.nextInt();
+                if(eventSport > 0 && eventSport < 5){
+                    break;
+                }
+                else{
+                    continue;
+                }
+            }
+            while(true);
+        }
+        catch (Throwable throwable){
+            System.out.println("You did not choose one of the options");
+        }
 
         System.out.println("Event Prize: ");
-        this.eventPrize = snc.nextInt();
+        try{
+            this.eventPrize = snc.nextInt();
+        }
+        catch (Throwable throwable){
+            System.out.println("You did not choose a valid amount");
+        }
 
         setEventId();
         setOrganizingCost();
@@ -64,23 +83,20 @@ public class Event {
 
     }
 
-    public String getInfo() {
+    public void getInfo() {
         switch (eventSport) {
             case 0:
-                return eventName + " is an Sport event , starting at " + eventDate + " at " + eventLocation;
+                System.out.println(eventName + " is an Sport event , starting at " + eventDate + " at " + eventLocation);
             case 1:
-                return eventName + " is an Chess event , starting at " + eventDate + " at " + eventLocation;
-
+                System.out.println(eventName + " is an Chess event , starting at " + eventDate + " at " + eventLocation);
             case 2:
-                return eventName + " is an Tennis event , starting at " + eventDate + " at " + eventLocation;
-
+                System.out.println(eventName + " is an Tennis event , starting at " + eventDate + " at " + eventLocation);
             case 3:
-                return eventName + " is an Basketball event , starting at " + eventDate + " at " + eventLocation;
-
+                System.out.println(eventName + " is an Basketball event , starting at " + eventDate + " at " + eventLocation);
             case 4:
-                return eventName + " is an Soccer event , starting at " + eventDate + " at " + eventLocation;
+                System.out.println(eventName + " is an Soccer event , starting at " + eventDate + " at " + eventLocation);
             default:
-                return "There s no information about this event";
+                System.out.println("There s no information about this event");
         }
     }
 
