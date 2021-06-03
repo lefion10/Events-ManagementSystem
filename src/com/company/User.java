@@ -3,105 +3,56 @@ import java.util.*;
 
 
 public class User {
-    private String firstName;
-    private String lastName;
-    private String schEvents;
-    private int events ;
-    private int balance = 0;
+    private final String _firstName;
+    private final String _lastName;
+    private final int _id;
+    private final int _sportId;
 
-    private static int id = 1000;
-    private int userId = 0;
-    private ArrayList<String> ongoingEvents;
-
-    {
-        ongoingEvents = new ArrayList<String>();
+    public User(String firstName, String lastName, int id, int sportId){
+        _firstName = firstName;
+        _lastName = lastName;
+        _id = id;
+        _sportId = sportId;
     }
 
-    public User(){
-        id++;
-
-        Scanner snc = new Scanner(System.in);
-
-        System.out.println("Enter user first name: ");
-        this.firstName = snc.nextLine();
-
-        System.out.println("Enter user last name: ");
-        this.lastName = snc.nextLine();
-
-        System.out.println("1 - Chess \n2 - Tennis \n3 Basketball \n4 Soccer : ");
-        try{
-            do{
-                this.events = snc.nextInt();
-                if(events > 0 && events < 5){
-                    break;
-                }
-                else{
-                    continue;
-                }
-            }
-            while(true);
-        }
-        catch (Throwable throwable){
-            System.out.println("You did not choose one of the options");
-        }
-
-        setUserId();
-        eventEnroll();
-
+    public String getFirstName(){
+        return _firstName;
     }
 
-    private void setUserId(){
-        this.userId = events + id;
-        System.out.println("The Id of this User is: " + userId );
-    }
-
-    public void eventEnroll(){
-        do{
-            Scanner snc = new Scanner(System.in);
-            System.out.println("Provide the event name to enroll or type Quit to finish enrolling: ");
-            String event = snc.nextLine();
-            if(!"Quit".equals(event)){
-                ongoingEvents.add(event);
-                if(balance < 0){
-                    System.out.println("Your account balance has fallen below zero , you can't enroll in further events");
-                    break;
-                }
-                balance -= 100;
-            }
-            else{
-             break;
-            }
-        }while(true);
-
-        System.out.println(firstName + " " + lastName + " will be attending to the following events: ");
-        System.out.println(ongoingEvents);
-
-    }
-
-    public void balanceInfo(){
-        System.out.println("Your balance is: " + balance + "$");
-        if(balance < 0){
-            System.out.println("Your account balance has fallen below zero!");
-        }
+    public String getLastName(){
+        return _lastName;
     }
 
     public int getId(){
-        return id;
+        return _id;
     }
 
+    public int getSportId(){
+        return _sportId;
+    }
+
+    @Override
     public int hashCode(){
-        return id;
+        final int prime = 7;
+        int hash = 1;
+        hash = prime * prime + _id;
+        hash = prime * prime + _sportId;
+        return hash;
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
         if (!(obj instanceof User))
             return false;
         if (obj == this)
             return true;
-        return this.getId() == ((User) obj).getId();
+        User other = (User) obj;
+        if (_id != other._id)
+            return false;
+        if (_sportId != other._sportId)
+            return false;
+        return true;
     }
-
-
 
 }
