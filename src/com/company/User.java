@@ -3,17 +3,25 @@ import java.util.*;
 
 
 public class User {
+    private final String _username;
+    private final String _password;
     private final String _firstName;
     private final String _lastName;
     private final int _id;
     private final int _sportId;
 
-    public User(String firstName, String lastName, int id, int sportId){
+    public User(String username , String password,String firstName, String lastName, int id, int sportId){
+        _username = username;
+        _password = password;
         _firstName = firstName;
         _lastName = lastName;
         _id = id;
         _sportId = sportId;
     }
+
+    public String getUsername(){ return _username; }
+
+    public String getPassword(){ return _password; }
 
     public String getFirstName(){
         return _firstName;
