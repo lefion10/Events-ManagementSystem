@@ -37,6 +37,7 @@ public class Event {
     public int getId(){
         return _id;
     }
+
     public int getSportId(){
         return _sportId;
     }
