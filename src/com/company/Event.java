@@ -3,13 +3,13 @@ import java.util.*;
 
 public class Event {
     private final String _eventName;
-    private final Date _eventDate;
+    private final String _eventDate;
     private final int _eventPrize;
     private final int _id;
     private final int _sportId;
     private final int _locationId;
 
-    public Event(String eventName, int locationId, Date eventDate, int eventPrize, int id, int sportId ){
+    public Event(String eventName, int locationId, String eventDate, int eventPrize, int id, int sportId ){
         _eventName = eventName;
         _locationId = locationId;
         _eventDate = eventDate;
@@ -22,7 +22,7 @@ public class Event {
         return _eventName;
     }
 
-    public Date getDate(){
+    public String getDate(){
         return _eventDate;
     }
 
