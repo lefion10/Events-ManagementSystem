@@ -1,18 +1,22 @@
 package com.company;
-import java.util.*;
+import java.time.*;
 
 public class Event {
     private final String _eventName;
-    private final String _eventDate;
+    private LocalDate _eventDate;
+    private LocalTime _startTime;
+    private LocalTime _endTime;
     private final int _eventPrize;
     private final int _id;
     private final int _sportId;
     private final int _locationId;
 
-    public Event(String eventName, int locationId, String eventDate, int eventPrize, int id, int sportId ){
+    public Event(String eventName, int locationId, LocalDate eventDate, LocalTime startTime, final LocalTime endTime , int eventPrize, int id, int sportId ){
         _eventName = eventName;
         _locationId = locationId;
         _eventDate = eventDate;
+        _startTime = startTime;
+        _endTime = endTime;
         _eventPrize = eventPrize;
         _id = id;
         _sportId =sportId;
@@ -22,9 +26,13 @@ public class Event {
         return _eventName;
     }
 
-    public String getDate(){
+    public LocalDate getDate(){
         return _eventDate;
     }
+
+    public LocalTime getStartTime(){ return _startTime; }
+
+    public LocalTime getEndTime(){ return _endTime; }
 
     public int getLocation(){
         return _locationId;
