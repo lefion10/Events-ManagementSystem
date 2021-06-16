@@ -30,9 +30,13 @@ public class Event {
         return _eventDate;
     }
 
-    public LocalTime getStartTime(){ return _startTime; }
+    public LocalTime getStartTime(){
+        return _startTime;
+    }
 
-    public LocalTime getEndTime(){ return _endTime; }
+    public LocalTime getEndTime(){
+        return _endTime;
+    }
 
     public int getLocation(){
         return _locationId;
