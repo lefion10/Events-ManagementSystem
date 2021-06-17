@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Scheduler {
     private final Map<LocalDate,List<Event>> events = new HashMap<>();
-    private StadiumHours stadiumHours;
+    private Stadium stadium;
 
     public void scheduleEvent(Event event){
         LocalDate eventDate = event.getDate();
@@ -20,8 +20,8 @@ public class Scheduler {
 
     //  Compares the event hours with the available stadium hours
     private boolean validEvent(LocalTime startTime , LocalTime endTime){
-      return programCheck(startTime, stadiumHours.getOpeningHour(), stadiumHours.getClosingHour())
-              && programCheck(endTime, stadiumHours.getOpeningHour(), stadiumHours.getClosingHour());
+        return programCheck(startTime, stadium.getOpeningHour(), stadium.getClosingHour())
+                && programCheck(endTime, stadium.getOpeningHour(), stadium.getClosingHour());
     }
 
     // Checks if two events are in conflicting hours
