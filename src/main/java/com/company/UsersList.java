@@ -14,7 +14,7 @@ public class UsersList {
 
     private boolean conflictsWith(String username, String password, String comUsername, String comPassword){
         return (username.equals(comUsername) && password.equals(comPassword));
-    }
+    } 
 
     private Optional<User> findConflictingUser(String username, String password, List<User> usersList){
         return usersList.stream()
